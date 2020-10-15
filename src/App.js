@@ -1,11 +1,11 @@
 import React from 'react';
+import Header from './containers/Header'
 
 function App() {
   return (
-    <div >
-      App
-    </div>
-  );
+    <>
+      <Header />
+    </>  );
 }
 
 export default App;
