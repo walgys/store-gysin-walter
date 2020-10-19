@@ -1,11 +1,34 @@
 import React from 'react'
+import {Container, Title, Text, Image, Button} from './styles/card'
 
-function Card() {
+export const Card = ({children, ...restProps}) => {
     return (
-        <div>
-            Card
-        </div>
+        <Container {...restProps}>{children}</Container>
     )
 }
 
-export default Card
+Card.Title = ({children, ...restProps}) => {
+    return (
+        <Title {...restProps}>{children}</Title>
+    )
+}
+
+Card.Text = ({children, ...restProps}) => {
+    return (
+        <Text {...restProps}>{children}</Text>
+    )
+}
+
+Card.Image = ({src, alt, ...restProps}) => {
+    return (
+        <Image src={src} alt={alt} {...restProps} />
+    )
+}
+
+Card.Button = ({children, ...restProps}) => {
+    return (
+        <Button {...restProps}>{children}</Button>
+    )
+}
+
+
