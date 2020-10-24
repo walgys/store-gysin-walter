@@ -23,7 +23,7 @@ const Jumbotron = styled.div`
         font-weight: 700;    
         bottom: 10%;
         left: 10%;
-
+    }
 `
 
 function Jumbo() {
