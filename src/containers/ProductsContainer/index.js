@@ -1,23 +1,30 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
-import productImage from '../../img/iPhone8-x1.png'
+import {productsContext} from '../../contexts'
 
 
 
 function Products() {
+    const { products } = useContext(productsContext)
     return (
         <ProductsContainer>
-            <Card>    
-                <Card.Image src={productImage}></Card.Image>
-                <Card.Category>El Título</Card.Category>
-                <Card.Text>Hola</Card.Text>
-                <Card.IconButton onClick={()=>console.log('Click')}></Card.IconButton>
-                <Card.Redeem>
-                    <Card.Price>12.000</Card.Price>
-                    <Card.RedeemButton onClick={()=>console.log('Click')}>Redeem Now</Card.RedeemButton>
-                </Card.Redeem>
-            </Card>
+            {products.slice(0,16).map(product=>{
+                
+                return(
+                    <Card key={product._id}>    
+                        <Card.Image src={product.img.url}></Card.Image>
+                        <Card.Category>{product.category}</Card.Category>
+                        <Card.Text>{product.name}</Card.Text>
+                        <Card.IconButton onClick={()=>console.log('Click')}></Card.IconButton>
+                        <Card.Redeem>
+                        <Card.Price>{product.cost}</Card.Price>
+                        <Card.RedeemButton onClick={()=>console.log('Click')}>Redeem Now</Card.RedeemButton>
+                        </Card.Redeem>
+                    </Card>
+                )
+            })}
+            
             
 
         </ProductsContainer>

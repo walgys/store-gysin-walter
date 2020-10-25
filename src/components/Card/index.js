@@ -25,7 +25,7 @@ export const Card = ({children, ...restProps}) => {
 const Category = ({children, ...restProps}) => {
     const {hovering} = useContext(cardContext)
     return (
-    <CategoryStyled hovering={hovering} {...restProps}>{`${children} ${hovering}`}</CategoryStyled>
+    <CategoryStyled hovering={hovering} {...restProps}>{children}</CategoryStyled>
     )
 }
 

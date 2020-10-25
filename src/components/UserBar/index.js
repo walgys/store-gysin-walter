@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { userContext } from '../../contexts'
 import CreditAmount from '../CreditAmount'
 
 
@@ -19,12 +20,13 @@ align-items: center;
 `
 
 function UserBar() {
-    const userName = "John Kite"
+    const {user} = useContext(userContext)
+    
 
     return (
         <UserBarContainer>
-            <h5>{userName}</h5>
-            <CreditAmount />
+            <h5>{user.name}</h5>
+            <CreditAmount credits={user.points}/>
         </UserBarContainer>
     )
 }

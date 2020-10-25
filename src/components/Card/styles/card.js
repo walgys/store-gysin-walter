@@ -93,36 +93,19 @@ export const ContainerStyled = styled.div`
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     transform: translateZ(0);
     transition: all 0.5s;
-    ${RedeemButtonStyled}{
-        opacity: 0;         
-        overflow: hidden;
-        transition: all 0.5s;
-    }
     ${RedeemStyled}{
         opacity: 0;
         overflow: hidden;
-        transition: all 0.5s;
+        transition: opacity 0.5s;
     }
-    ${PriceStyled}{
-        opacity: 0;
-        transition: all 0.5s;
-    }
+    
     &:hover{
         transform: translate(10px, -10px);
         transition: all 0.5s; 
         ${RedeemStyled}{
         opacity: 1;
         overflow: hidden;
-        transition: all 0.5s;
-        }
-        ${RedeemButtonStyled}{
-            opacity: 1;         
-            overflow: hidden;
-            transition: all 0.5s;
-        }
-        ${PriceStyled}{
-            opacity: 1;
-            transition: all 0.5s;
+        transition: opacity 0.5s;
         }
     }
 `

@@ -2,11 +2,11 @@ import React from 'react'
 import coin from '../../icons/coin.svg'
 import {CreditAmountPill} from './styles/creditamount'
 
-function CreditAmount() {
-    const creditsAmount = 6000
+function CreditAmount(props) {
+    const {credits} = props
     return (    
         <CreditAmountPill>
-            <h5>{creditsAmount}</h5>
+            <h5>{credits}</h5>
             <img src={coin} alt="coin icon" />
         </CreditAmountPill>
     )
