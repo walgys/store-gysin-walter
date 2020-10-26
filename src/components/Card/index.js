@@ -1,5 +1,5 @@
 import React,{createContext, useContext, useState} from 'react'
-import {ContainerStyled, CategoryStyled, TextStyled, ImageStyled, IconStyled, RedeemStyled, PriceStyled, RedeemButtonStyled} from './styles/card'
+import {ContainerStyled, CategoryStyled, TextStyled, ImageStyled, IconStyled, RedeemStyled, PriceStyled, RedeemButtonStyled, NotEnoughStyled} from './styles/card'
 import buyBlueIcon from  '../../icons/buy-blue.svg'
 import buyWhiteIcon from  '../../icons/buy-white2.svg'
 import coin from '../../icons/coin.svg'
@@ -39,7 +39,8 @@ const IconButton = ({children, ...restProps}) => {
     return (
         <IconStyled icon={hovering ? buyWhiteIcon : buyBlueIcon} {...restProps}>{children}</IconStyled>
     )
-}   
+}
+   
 
 Card.Category = Category
 Card.Redeem = Redeem
@@ -66,5 +67,11 @@ Card.RedeemButton = ({children, ...restProps}) => {
 Card.Price =  ({children, ...restProps}) => {
     return (
         <PriceStyled {...restProps}><h5>{children}</h5><img src={coin} alt={'coin'} /></PriceStyled>
+    )
+}
+
+Card.notEnoughButton = ({children, ...restProps}) => {
+    return (
+        <NotEnoughStyled {...restProps}><h5>{`You need ${children}`}</h5><img src={coin} alt={'coin'} /></NotEnoughStyled>
     )
 }

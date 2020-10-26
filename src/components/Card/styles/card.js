@@ -38,10 +38,16 @@ export const RedeemButtonStyled = styled.h5`
     width:228px;
     height:42px;
     border-radius: 25px;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
     font-size: 18px;
     font-weight: 600;
     position: absolute;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     transform: translateZ(0);
     bottom: 20%;
@@ -56,6 +62,54 @@ export const RedeemButtonStyled = styled.h5`
         -webkit-box-shadow: 0px 1px 3px 0px #000000; 
         box-shadow: 0px 1px 3px 0px #000000;
         transform: perspective(1px) scale(1.05);
+        transition: all 0.3s;
+    }
+`
+export const NotEnoughStyled = styled.div`
+    width:142px;
+    height:42px;
+    border-radius: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    opacity: 0.8;
+    background: rgba(38,38,38);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialised;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+    position: absolute;
+    z-index: 11;
+    right: 5%;
+    top: 5%;
+    & h5{
+        font-size: 14px;
+        color: white;
+        font-weight: 400;
+        line-height: 42px;
+        
+    }
+    & img {
+        width: 20px;
+        height: 20px;
+        padding-top: 2px;
+        margin-left: 3px;
+    }
+    &:hover{
+        img{
+          width: 21px;
+          height: 21px;  
+          padding-top: 3px;
+          margin-left: 4px;
+        }
+        cursor: pointer;
+        zoom: 105%;
         transition: all 0.3s;
     }
 `
@@ -80,6 +134,8 @@ export const IconStyled = styled.div`
     }
 `
 
+
+
 export const ContainerStyled = styled.div`
     width: 254px;
     height: 254px;  
@@ -89,7 +145,7 @@ export const ContainerStyled = styled.div`
     margin: 10px;
     align-items: center;
     position: relative;
-    -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     transform: translateZ(0);
     transition: all 0.5s;
