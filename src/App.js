@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './containers/Header'
 import styled from 'styled-components'
 import {endpoint, headers} from './utils'

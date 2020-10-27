@@ -30,12 +30,12 @@ const Category = ({children, ...restProps}) => {
 }
 
 const Redeem = ({children, ...restProps}) => {
-    const {hovering, setHovering} = useContext(cardContext)
+    
     return <RedeemStyled {...restProps}>{children}</RedeemStyled>
 }
 
 const IconButton = ({children, ...restProps}) => {
-    const {hovering, setHovering} = useContext(cardContext)
+    const {hovering} = useContext(cardContext)
     return (
         <IconStyled icon={hovering ? buyWhiteIcon : buyBlueIcon} {...restProps}>{children}</IconStyled>
     )

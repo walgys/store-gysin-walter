@@ -1,4 +1,5 @@
 import React from 'react'
+import {ProductIndexStyled} from './styles/pruductindex'
 
 function ProductIndex() {
     return (

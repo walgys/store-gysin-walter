@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
 import {productsContext, userContext} from '../../contexts'
+import NavigationBar from '../NavigationBar'
 
 
 
@@ -11,6 +12,8 @@ function Products() {
     const credits = 800
     
     return (
+        <>
+        <NavigationBar />
         <ProductsContainer>
             {products.slice(0,16).map(product=>{
                 const iconButton = <Card.IconButton onClick={()=>console.log('Redeem')}></Card.IconButton>
@@ -34,6 +37,7 @@ function Products() {
             
 
         </ProductsContainer>
+        </>
     )
 }
 

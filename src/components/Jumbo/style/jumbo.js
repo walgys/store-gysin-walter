@@ -5,13 +5,13 @@ export const Jumbotron = styled.div`
 width: 100%;
 max-width: 1440px;
 height: auto;
-max-height: 412px;
+max-height: 300px;
 position: relative;
 & img{
     width: 100%;
     max-width: 1440px;
-    max-height: 412px;
-    
+    max-height: 300px;
+    object-fit: cover;
 }
 & h1{
     font-family: 'Source Sans Pro', sans-serif; 
