@@ -21,4 +21,8 @@ export const CreditAmountPill = styled.div`
         padding-top: 5px;
         margin-right: 5px;
     }
+    :hover{
+        background: silver;
+        cursor: pointer;
+    }
 `

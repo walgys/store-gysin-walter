@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from './containers/Header'
 import styled from 'styled-components'
-import {endpoint, headers} from './utils'
+import {endpoint, headers, useFetch} from './utils'
 import Products from './pages/Products';
-import { userContext } from './contexts';
+import CreditAddModal from './components/CreditAddModal'
+import { appContext } from './contexts';
 
 
 
@@ -17,23 +18,28 @@ const Container = styled.div`
 `
 
 function App() {
-  const [user, setUser] = useState({})
-
+  const [user, fetchUser] = useFetch()
+  const [loading, setLoading] = useState(true)
+  const [creditAddModal, setCreditAddModal] = useState(false)
+   
   useEffect(() => { 
-    const fetchData = async ()=>{
-    const userResult = await fetch(endpoint + '/user/me', headers)
-    const userData = await userResult.json()
-    setUser(userData)
-  }
-    fetchData()
-    
+    fetchUser(endpoint + '/user/me')  
   }, [])
+
+  useEffect(() => {
+    Object.keys(user).length > 0 && setLoading(false)
+  }, [user])
+
+
+  const values = {user, fetchUser, creditAddModal, setCreditAddModal}
+
   return (
        <Container>
-         <userContext.Provider value={{user: user}} >
-           <Header />
-           <Products />
-         </userContext.Provider>
+         <appContext.Provider value={values} >
+           {creditAddModal && <CreditAddModal />}
+           {loading ? <p>Loading...</p> : <Header />}
+           {loading ? <p>Loading...</p> : <Products />}
+         </appContext.Provider>
         </Container>
      );
 }

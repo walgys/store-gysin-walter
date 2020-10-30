@@ -1,15 +1,15 @@
 import React, {useContext} from 'react'
 import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
-import {productsContext, userContext} from '../../contexts'
+import {productsContext, appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
 
 
 
 function Products() {
     const { products } = useContext(productsContext)
-    const { user } = useContext(userContext)
-    const credits = 800
+    const { user } = useContext(appContext)
+    const credits = user.points
     
     return (
         <>

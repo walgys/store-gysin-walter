@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState} from 'react'
 import styled from 'styled-components'
-import { userContext } from '../../contexts'
+import { appContext } from '../../contexts'
 import CreditAmount from '../CreditAmount'
-
+import CreditAddModal from '../CreditAddModal'
 
 const UserBarContainer = styled.div`
 margin-left: auto;
@@ -20,8 +20,7 @@ align-items: center;
 `
 
 function UserBar() {
-    const {user} = useContext(userContext)
-    
+    const {user} = useContext(appContext)
 
     return (
         <UserBarContainer>

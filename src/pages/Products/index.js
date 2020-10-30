@@ -1,24 +1,15 @@
 import React, { useState, useEffect} from 'react'
 import ProductsContainer from '../../containers/ProductsContainer';
 import {productsContext} from '../../contexts'
-import {endpoint, headers} from '../../utils'
+import {endpoint, headers, useFetch} from '../../utils'
 import Jumbo from '../../components/Jumbo'
 
 function Products() {
 
-    const [products, setProducts] = useState([])
- 
-
+    const [products, fetchProducts] = useFetch([])
 
     useEffect( () => { 
-        const fetchData = async ()=>{
-        const productsResult = await fetch(endpoint + '/products', headers)
-        
-        const productList = await productsResult.json()
-        setProducts(productList)
-        
-    }
-        fetchData();
+        fetchProducts(endpoint + '/products', headers);
     }, [])
 
     return (
