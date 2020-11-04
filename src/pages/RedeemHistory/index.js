@@ -1,6 +1,6 @@
 import React from 'react'
 
-function RedeemHistory() {
+const RedeemHistory = () => {
     return (
         <div>
             RedeemHistory

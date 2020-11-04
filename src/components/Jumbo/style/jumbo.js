@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const Jumbotron = styled.div`
 width: 100%;
+padding-top: 80px;
 max-width: 1440px;
 height: auto;
 max-height: 300px;

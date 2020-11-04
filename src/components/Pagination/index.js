@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Pagination() {
+const Pagination = (props) => {
+
     return (
         <div>
             Pagination

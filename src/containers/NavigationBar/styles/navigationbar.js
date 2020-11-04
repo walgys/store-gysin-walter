@@ -8,7 +8,5 @@ export const NavigationBarStyled = styled.div`
     align-items: center;
     margin-left: 5%;
     margin-right: 5%;
-    padding-left: 3%;
-    padding-right: 3%;
     border-bottom: 1px solid black;
 `

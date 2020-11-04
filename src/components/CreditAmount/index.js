@@ -4,7 +4,7 @@ import { appContext } from '../../contexts'
 import coin from '../../icons/coin.svg'
 import {CreditAmountPill} from './styles/creditamount'
 
-function CreditAmount(props) {
+const CreditAmount = (props) => {
     const {credits} = props
     const {setCreditAddModal} = useContext(appContext)
 

@@ -1,11 +1,12 @@
 import React from 'react'
 
-const Filters = () => {
+const PageButton = () => {
     return (
         <div>
-            Filters
+            PAgeButton
         </div>
     )
 }
 
-export default Filters
+export default PageButton
+

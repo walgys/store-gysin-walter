@@ -14,7 +14,7 @@ width: 39px;
 height: 36px;
 `
 
-function TopBar() {
+const TopBar = () => {
     return (
         <Bar>
             <LogoImg src={logo} alt="logo" />

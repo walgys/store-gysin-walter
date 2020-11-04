@@ -1,11 +1,11 @@
 import React from 'react'
 import {ProductIndexStyled} from './styles/pruductindex'
 
-function ProductIndex() {
+const ProductIndex = (props) => {
     return (
-        <div>
-            ProductIndex
-        </div>
+        <ProductIndexStyled>
+            {`${props.start} of ${props.end} products`}
+        </ProductIndexStyled>
     )
 }
 

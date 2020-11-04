@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ActionModal() {
+const ActionModal = () => {
     return (
         <div>
             ActionModal

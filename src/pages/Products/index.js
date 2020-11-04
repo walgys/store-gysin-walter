@@ -1,22 +1,33 @@
-import React, { useState, useEffect} from 'react'
+import React, { useContext, useEffect} from 'react'
 import ProductsContainer from '../../containers/ProductsContainer';
-import {productsContext} from '../../contexts'
+import {appContext, productsContext} from '../../contexts'
 import {endpoint, headers, useFetch} from '../../utils'
 import Jumbo from '../../components/Jumbo'
+import CreditAddModal from '../../components/CreditAddModal'
+import Header from '../../containers/Header'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
-function Products() {
 
-    const [products, fetchProducts] = useFetch([])
+const Products = () => {
 
+    
+    const {loading, creditAddModal, fetchProducts} = useContext(appContext)
     useEffect( () => { 
-        fetchProducts(endpoint + '/products', headers);
+        fetchProducts(endpoint + '/products');
     }, [])
 
     return (
-        <productsContext.Provider value={{products: products}} >
-            <Jumbo category={'ELECTRONICS'} />
-            <ProductsContainer />
-        </productsContext.Provider>
+        <>
+                <ToastContainer position={'bottom-right'} autoClose={3000}/>
+                {creditAddModal && <CreditAddModal toast={toast}/>}
+                {loading ? <p>Loading...</p> : <Header />}
+                <Jumbo category={'ELECTRONICS'} />
+                {loading ? <p>Loading...</p> : 
+                    
+                    <ProductsContainer />}
+                </>  
+        
         
     )
 }

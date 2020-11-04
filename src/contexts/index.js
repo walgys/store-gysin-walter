@@ -1,8 +1,7 @@
 import {createContext} from 'react'
 
 export const productsContext = createContext({
-    products: [],
-    fetchProducts: ()=>{}
+    
 })
 
 export const appContext = createContext({
@@ -12,4 +11,6 @@ export const appContext = createContext({
     setCreditAddModal: ()=>{},
     actionModal: false,
     setActionModal: ()=>{},
+    products: [],
+    fetchProducts: ()=>{}
 })

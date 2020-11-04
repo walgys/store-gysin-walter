@@ -3,19 +3,21 @@ import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
 import {productsContext, appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
+import { useState } from 'react'
 
 
 
-function Products() {
-    const { products } = useContext(productsContext)
-    const { user } = useContext(appContext)
+const Products = () => {
+    const { user, products } = useContext(appContext)
+    const [pageRange, setPageRange] = useState({start:0, end:16})
     const credits = user.points
+
     
     return (
         <>
-        <NavigationBar />
+        <NavigationBar setPageRange={setPageRange} start={pageRange.end} end={products.length} />
         <ProductsContainer>
-            {products.slice(0,16).map(product=>{
+            {products.slice(pageRange.start, pageRange.end).map(product=>{
                 const iconButton = <Card.IconButton onClick={()=>console.log('Redeem')}></Card.IconButton>
                 const notEnoughButton = <Card.notEnoughButton onClick={()=>console.log('Add Credits')}>{product.cost - credits}</Card.notEnoughButton>
                 const redeemButton = <Card.RedeemButton onClick={()=>console.log('Redeem')}>Redeem Now</Card.RedeemButton>

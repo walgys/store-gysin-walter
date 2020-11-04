@@ -19,7 +19,7 @@ align-items: center;
 }
 `
 
-function UserBar() {
+const UserBar = () => {
     const {user} = useContext(appContext)
 
     return (

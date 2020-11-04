@@ -1,13 +1,14 @@
 import React from 'react'
 
 import TopBar from '../TopBar'
+import {HeaderStyled} from './styles/header'
 
-function Header() {
+const Header = () => {
     return (
-        <div>
+        <HeaderStyled>
         <TopBar />
         
-        </div>
+        </HeaderStyled>
     )
 }
 

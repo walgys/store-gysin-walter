@@ -6,7 +6,7 @@ import headerImg from '../../img/header-x2.png'
 
 
 
-function Jumbo(props) {
+const Jumbo = (props) => {
     return (
         <Jumbotron >
             <img src={headerImg} alt="Jumbo" />
