@@ -1,10 +1,11 @@
 import React from 'react'
+import { PageButtonStyled } from './style/pagebutton'
 
-const PageButton = () => {
+const PageButton = (props) => {
     return (
-        <div>
-            PAgeButton
-        </div>
+        <PageButtonStyled {...props} onClick={props.onClick}>
+            {props.children}
+        </PageButtonStyled>
     )
 }
 

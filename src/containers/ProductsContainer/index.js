@@ -1,27 +1,42 @@
 import React, {useContext} from 'react'
 import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
-import {productsContext, appContext} from '../../contexts'
+import { appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
-import { useState } from 'react'
+
 
 
 
 const Products = () => {
-    const { user, products } = useContext(appContext)
-    const [pageRange, setPageRange] = useState({start:0, end:16})
-    const credits = user.points
-
-    
+    const {
+         products,
+         setPageRange,
+         pageRange,
+         maxPage,
+         credits,
+         setCreditAddModal,
+         setRedeemModal,
+         setProductId } = useContext(appContext)
+    const onRedeemClick = (productId) => {
+        setRedeemModal(true)
+        setProductId(productId)
+    }
+  
     return (
         <>
-        <NavigationBar setPageRange={setPageRange} start={pageRange.end} end={products.length} />
+        <NavigationBar
+            setPageRange={setPageRange}
+            start={pageRange.start}
+            end={pageRange.end}
+            total={products.length}
+            maxPage={maxPage}
+         />
         <ProductsContainer>
             {products.slice(pageRange.start, pageRange.end).map(product=>{
-                const iconButton = <Card.IconButton onClick={()=>console.log('Redeem')}></Card.IconButton>
-                const notEnoughButton = <Card.notEnoughButton onClick={()=>console.log('Add Credits')}>{product.cost - credits}</Card.notEnoughButton>
-                const redeemButton = <Card.RedeemButton onClick={()=>console.log('Redeem')}>Redeem Now</Card.RedeemButton>
-                const addCreditsButton = <Card.RedeemButton onClick={()=>console.log('Add Credits')}>Add More Credits</Card.RedeemButton>
+                const iconButton = <Card.IconButton onClick={()=>onRedeemClick(product._id)}></Card.IconButton>
+                const notEnoughButton = <Card.notEnoughButton onClick={()=>setCreditAddModal(true)}>{product.cost - credits}</Card.notEnoughButton>
+                const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id)}>Redeem Now</Card.RedeemButton>
+                const addCreditsButton = <Card.RedeemButton onClick={()=>setCreditAddModal(true)}>Add More Credits</Card.RedeemButton>
                 return(
                     <Card key={product._id}>    
                         <Card.Image src={product.img.url}></Card.Image>

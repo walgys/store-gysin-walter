@@ -1,9 +1,5 @@
 import {createContext} from 'react'
 
-export const productsContext = createContext({
-    
-})
-
 export const appContext = createContext({
     user:{},
     fetchUser: ()=>{},

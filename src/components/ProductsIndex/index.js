@@ -4,7 +4,7 @@ import {ProductIndexStyled} from './styles/pruductindex'
 const ProductIndex = (props) => {
     return (
         <ProductIndexStyled>
-            {`${props.start} of ${props.end} products`}
+            {`${props.start}-${props.end} of ${props.total} products`}
         </ProductIndexStyled>
     )
 }

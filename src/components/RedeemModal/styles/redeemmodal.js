@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 
 
-export const CreditAddModalStyled = styled.div`
+export const RedeemModalStyled = styled.div`
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */

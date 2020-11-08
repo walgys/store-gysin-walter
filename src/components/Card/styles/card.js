@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const RedeemStyled = styled.div`
     background: rgba(37, 187, 241,0.85);

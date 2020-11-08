@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 
 export const CreditAmountPill = styled.div`
@@ -12,6 +12,12 @@ export const CreditAmountPill = styled.div`
     margin: 5px;
     padding: 3px;
     border-radius: 25px;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
     & h5{
         margin-left: 5px;
         padding-left: 5px;

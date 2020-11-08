@@ -1,7 +1,8 @@
 import React from 'react'
 import UserBar from '../../components/UserBar'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import logo from '../../img/aerolab-logo.svg'
+import {Link} from 'react-router-dom'
 
 const Bar = styled.div`
 display: flex;
@@ -17,7 +18,10 @@ height: 36px;
 const TopBar = () => {
     return (
         <Bar>
-            <LogoImg src={logo} alt="logo" />
+            <Link to={'/'} >
+              <LogoImg src={logo} alt="logo" />  
+            </Link>
+            
             <UserBar />
         </Bar>
     )
