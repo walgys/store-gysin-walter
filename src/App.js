@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components/macro'
-import {endpoint, useFetch} from './utils'
+import {endpoint, useFetch, orderByPrice, orderByDate, filterCategory} from './utils'
 import Products from './pages/Products';
 import { appContext } from './contexts';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
@@ -30,11 +30,20 @@ const App = () => {
   const [redeemModal, setRedeemModal] = useState(false)
   const [productId, setProductId] = useState('')
   const [products, fetchProducts] = useFetch([])
+  const [history, fetchHistory] = useFetch([])
+  const [productsFilters, setProductsFilters] = useState([{filter: orderByPrice, filterName: 'orderByPrice', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {category: ['Laptops','Cameras']}}])
+  const [historyFilters, setHistoryFilters] = useState([{filter: orderByDate, filterName: 'orderByDate', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {category: ['Laptops']}}])
+  const [filteredProducts, setFilteredProducts] = useState(products)
+  const [filteredHistory, setFilteredHistory] = useState(history)
   const productsPerPage = 16
+  const historyProductsPerPage = 50;
   const [page, setPage] = useState(1)
   const [pageRange, setPageRange] = useState({start:0, end:productsPerPage})
+  const [historyPage, setHistoryPage] = useState(1)
+  const [historyPageRange, setHistoryPageRange] = useState({start:0, end:historyProductsPerPage})
   const credits = user.points
-  const maxPage = Math.ceil(products.length / productsPerPage)
+  const maxPage = Math.ceil(filteredProducts.length / productsPerPage)
+  const historyMaxPage = Math.ceil(filteredHistory.length / historyProductsPerPage)
   
   useEffect(() => { 
     fetchUser(endpoint + '/user/me')  
@@ -47,9 +56,30 @@ const App = () => {
   useEffect(() => {
     if(page === 1 ) setPageRange({start:0, end:productsPerPage})
     if(page > 1 && page < maxPage) setPageRange({start: page * productsPerPage, end: (page + 1) * productsPerPage})
-    if(page === maxPage) setPageRange({start: (page-1) * productsPerPage, end: page * productsPerPage})
+    if(page === maxPage) setPageRange({start: (page-1) * productsPerPage, end: page * productsPerPage})  
   }, [page, maxPage])
 
+  useEffect(() => {
+    if(historyPage === 1 ) setHistoryPageRange({start:0, end:historyProductsPerPage})
+    if(historyPage > 1 && historyPage < historyMaxPage) setHistoryPageRange({start: historyPage * historyProductsPerPage, end: (historyPage + 1) * historyProductsPerPage})
+    if(historyPage === historyMaxPage) setHistoryPageRange({start: (historyPage-1) * historyProductsPerPage, end: historyPage * historyProductsPerPage})  
+  }, [historyPage, historyMaxPage])
+
+  useEffect(() => {
+    setFilteredProducts(products)
+    if (productsFilters) productsFilters.forEach(({filter, params}) => {
+      setFilteredProducts(prevState => filter(prevState, params))
+    })
+  }, [productsFilters, products])
+
+  useEffect(() => {
+    setFilteredHistory(history)
+    if (historyFilters) historyFilters.forEach( ({filter, params}) => {
+      setFilteredHistory(prevState => filter(prevState, params))
+    })
+  }, [historyFilters, history])
+
+  
 
   const values = {
     user,
@@ -57,7 +87,7 @@ const App = () => {
     creditAddModal,
     setCreditAddModal,
     loading,
-    products,
+    filteredProducts,
     fetchProducts,
     page,
     setPage,
@@ -68,7 +98,17 @@ const App = () => {
     maxPage,
     redeemModal,
     setRedeemModal,
-    setProductId}
+    setProductId,
+    filteredHistory,
+    fetchHistory,
+    setHistoryPageRange,
+    setHistoryFilters,
+    setProductsFilters,
+    historyPageRange,
+    historyMaxPage,
+    historyPage,
+    setHistoryPage
+    }
 
   return (
        <Container>

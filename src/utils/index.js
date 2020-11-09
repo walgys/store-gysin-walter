@@ -8,6 +8,7 @@ export const header = {
 
 const creditsURL = `${endpoint}/user/points`
 const redeemURL = `${endpoint}/redeem`
+export const imgURL = 'https://coding-challenge-api.aerolab.co'
 
 export const useFetch = (initialState = {}) => {
     
@@ -23,6 +24,8 @@ export const useFetch = (initialState = {}) => {
     }
     return [data, fetchData]
 }
+
+
 
 export const addCredits = async (amount) =>{
     try{
@@ -41,3 +44,21 @@ export const redeemItem = async (productId) => {
         return false
     }
 }
+
+export const orderByDate = (items, params) => {
+    if (params.order){
+      if (params.order === 'Descendant') return items.sort((a, b) => new Date(b.createDate) - new Date (a.createDate))
+      if (params.order === 'Ascendant') return items.sort((a, b) => new Date(a.createDate) - new Date (b.createDate))
+    }else{
+      return items
+    }
+  }
+ export const orderByPrice = (items, params) => {
+    if (params.order){
+      if(params.order === 'Descendant') return items.sort((a, b) => b.cost - a.cost)
+      if(params.order === 'Ascendant') return items.sort((a, b) => a.cost - b.cost)
+    }else{
+      return items
+    }
+  }
+  export const filterCategory = (items, params) => items.filter(item => { if(params.category){return params.category.includes(item.category)}else{ return true}})

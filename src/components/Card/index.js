@@ -1,5 +1,5 @@
 import React,{createContext, useContext, useState} from 'react'
-import {ContainerStyled, CategoryStyled, TextStyled, ImageStyled, IconStyled, RedeemStyled, PriceStyled, RedeemButtonStyled, NotEnoughStyled} from './styles/card'
+import {ContainerStyled, HistoryContainerStyled, CategoryStyled, TextStyled, ImageStyled, IconStyled, RedeemStyled, PriceStyled, RedeemButtonStyled, NotEnoughStyled} from './styles/card'
 import buyBlueIcon from  '../../icons/buy-blue.svg'
 import buyWhiteIcon from  '../../icons/buy-white2.svg'
 import coin from '../../icons/coin.svg'
@@ -16,10 +16,24 @@ export const Card = ({children, ...restProps}) => {
             hovering: hovering,
             setHovering: setHovering,
         }} >
-            <ContainerStyled onMouseEnter={()=>setHovering(true)} onMouseLeave={()=>setHovering(false)} {...restProps}>{children}</ContainerStyled>
+            {children}
         </cardContext.Provider>
         )
        
+}
+
+const Container = ({children, ...restProps}) => {
+    const {setHovering} = useContext(cardContext)
+    return (
+    <ContainerStyled onMouseEnter={()=>setHovering(true)} onMouseLeave={()=>setHovering(false)} {...restProps}>{children}</ContainerStyled>
+    )
+}
+
+const HistoryContainer = ({children, ...restProps}) => {
+    const {setHovering} = useContext(cardContext)
+    return (
+    <HistoryContainerStyled onMouseEnter={()=>setHovering(true)} onMouseLeave={()=>setHovering(false)} {...restProps}>{children}</HistoryContainerStyled>
+    )
 }
 
 const Category = ({children, ...restProps}) => {
@@ -41,7 +55,8 @@ const IconButton = ({children, ...restProps}) => {
     )
 }
    
-
+Card.Container = Container
+Card.HistoryContainer = HistoryContainer
 Card.Category = Category
 Card.Redeem = Redeem
 Card.IconButton = IconButton

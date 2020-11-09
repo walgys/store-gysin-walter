@@ -65,6 +65,39 @@ export const RedeemButtonStyled = styled.h5`
         transition: all 0.3s;
     }
 `
+
+export const RedeemHistoryStyled = styled.h5`
+    background: rgba(255, 255, 255, 1);
+    color: rgba(130, 130,130,1);
+    width:228px;
+    height:42px;
+    border-radius: 25px;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    font-size: 18px;
+    font-weight: 600;
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+    bottom: 20%;
+    left: 50%;
+    margin-left: -114px;
+    text-align: center;
+    line-height: 42px;
+    &:hover{
+        cursor: pointer;
+        background: #40BBF1;
+        color: black;   
+        -webkit-box-shadow: 0px 1px 3px 0px #000000; 
+        box-shadow: 0px 1px 3px 0px #000000;
+    }
+`
+
 export const NotEnoughStyled = styled.div`
     width:142px;
     height:42px;
@@ -145,7 +178,7 @@ export const ContainerStyled = styled.div`
     margin: 10px;
     align-items: center;
     position: relative;
-        backface-visibility: hidden;
+    backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     transform: translateZ(0);
     transition: all 0.5s;
@@ -157,6 +190,38 @@ export const ContainerStyled = styled.div`
     
     &:hover{
         transform: translate(10px, -10px);
+        transition: all 0.5s; 
+        ${RedeemStyled}{
+        opacity: 1;
+        overflow: hidden;
+        transition: opacity 0.5s;
+        }
+    }
+`
+
+export const HistoryContainerStyled = styled.div`
+    width: 100%;
+    height: 254px;  
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
+    background:#ffffff;
+    margin: 10px;
+    align-items: center;
+    position: relative;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+    transition: all 0.5s;
+    ${RedeemHistoryStyled}{
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity 0.5s;
+    }
+    
+    &:hover{
+        transform: translate(3px, -3px);
+        box-shadow:4px 4px 8px 0 rgba(0,0,0,0.20);
         transition: all 0.5s; 
         ${RedeemStyled}{
         opacity: 1;
@@ -184,7 +249,7 @@ export const TextStyled = styled.h5`
 `
 
 export const ImageStyled = styled.img`
-    width: 252px;
-    height: 182px;
+    width: ${props => props.width ? props.width : '252px' };
+    height: ${props => props.height ? props.height : '182px' };
 `
 

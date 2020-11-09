@@ -14,7 +14,7 @@ const RedeemModal = (props) => {
         
         const redeem = async (productId)=>{ 
         try{
-            toast.info('Trying to add Credits',{
+            toast.info('Trying to redeem your product',{
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -25,7 +25,7 @@ const RedeemModal = (props) => {
             const success = await redeemItem(productId)
              
             if (success){
-                toast.success('Credits have been added to your account',{
+                toast.success('Redeem Successful, the product is yours.',{
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,

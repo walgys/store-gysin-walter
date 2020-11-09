@@ -3,15 +3,19 @@ import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
 import { appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
+import PriceFilter from '../../components/PriceFilter'
+import CategoryFilter from '../../components/CategoryFilter'
 
 
 
 
 const Products = () => {
     const {
-         products,
+         filteredProducts,
          setPageRange,
          pageRange,
+         page,
+         setPage,
          maxPage,
          credits,
          setCreditAddModal,
@@ -21,32 +25,41 @@ const Products = () => {
         setRedeemModal(true)
         setProductId(productId)
     }
-  
     return (
         <>
         <NavigationBar
             setPageRange={setPageRange}
             start={pageRange.start}
             end={pageRange.end}
-            total={products.length}
+            total={filteredProducts.length}
             maxPage={maxPage}
-         />
+            page={page} 
+            setPage={setPage}
+         >
+             <NavigationBar.filters>
+                 <PriceFilter />
+                 <CategoryFilter />
+             </NavigationBar.filters>
+         </NavigationBar>
         <ProductsContainer>
-            {products.slice(pageRange.start, pageRange.end).map(product=>{
+            {filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{
                 const iconButton = <Card.IconButton onClick={()=>onRedeemClick(product._id)}></Card.IconButton>
                 const notEnoughButton = <Card.notEnoughButton onClick={()=>setCreditAddModal(true)}>{product.cost - credits}</Card.notEnoughButton>
                 const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id)}>Redeem Now</Card.RedeemButton>
                 const addCreditsButton = <Card.RedeemButton onClick={()=>setCreditAddModal(true)}>Add More Credits</Card.RedeemButton>
                 return(
-                    <Card key={product._id}>    
-                        <Card.Image src={product.img.url}></Card.Image>
-                        <Card.Category>{product.category}</Card.Category>
-                        <Card.Text>{product.name}</Card.Text>
-                        {parseInt(credits) >= parseInt(product.cost) ? iconButton : notEnoughButton }
-                        <Card.Redeem>
-                            <Card.Price>{product.cost}</Card.Price>
-                            {parseInt(credits) >= parseInt(product.cost) ? redeemButton : addCreditsButton }
-                        </Card.Redeem>
+                    <Card key={product._id}>
+                        <Card.Container>
+                            <Card.Image src={product.img.url}></Card.Image>
+                            <Card.Category>{product.category}</Card.Category>
+                            <Card.Text>{product.name}</Card.Text>
+                            {parseInt(credits) >= parseInt(product.cost) ? iconButton : notEnoughButton }
+                            <Card.Redeem>
+                                <Card.Price>{product.cost}</Card.Price>
+                                {parseInt(credits) >= parseInt(product.cost) ? redeemButton : addCreditsButton }
+                            </Card.Redeem>
+                        </Card.Container>   
+                        
                     </Card>
                 )
             })}

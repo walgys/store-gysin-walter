@@ -7,14 +7,21 @@ import { appContext } from '../../contexts'
 
 
 const NavigationBar = (props) => {
-    const {page,setPage} = useContext(appContext)
+    const {page, setPage, maxPage, children} = props
     return (
         <NavigationBarStyled>
             <ProductsIndex {...props} />
-            <Filters />
-            <Pagination page={page} setPage={setPage} maxPage={props.maxPage} />
+            {children}
+            <Pagination page={page} setPage={setPage} maxPage={maxPage} />
         </NavigationBarStyled>
     )
 }
+
+const NavigationFilters = ({children, ...restProps}) => {
+    
+    return  <Filters>{children}</Filters>
+}
+
+NavigationBar.filters = NavigationFilters
 
 export default NavigationBar

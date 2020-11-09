@@ -4,6 +4,7 @@ import {PaginationStyled} from './style/pagination'
 
 const Pagination = (props) => {
     const { page, setPage, maxPage} = props
+    console.log(page,maxPage)
     return (
         <PaginationStyled>
             {<PageButton active={page > 1 ? true : false} onClick={()=>setPage(page-1)} >{'<'}</PageButton>}

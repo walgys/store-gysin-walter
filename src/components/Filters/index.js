@@ -1,10 +1,12 @@
 import React from 'react'
+import { FiltersStyled } from './styles/filters'
 
-const Filters = () => {
+
+const Filters = (props) => {
     return (
-        <div>
-            Filters
-        </div>
+        <FiltersStyled>
+            {props.children}
+        </FiltersStyled>
     )
 }
 
