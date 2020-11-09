@@ -5,6 +5,12 @@ export const PageButtonStyled = styled.div`
     width:46px;
     height:46px;
     border-radius:100%;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
     color: ${props => props.active===true ? "#616161;" : "#d9d9d9"};
     display: flex;
     align-items: center;

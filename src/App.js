@@ -31,8 +31,9 @@ const App = () => {
   const [productId, setProductId] = useState('')
   const [products, fetchProducts] = useFetch([])
   const [history, fetchHistory] = useFetch([])
-  const [productsFilters, setProductsFilters] = useState([{filter: orderByPrice, filterName: 'orderByPrice', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {category: ['Laptops','Cameras']}}])
-  const [historyFilters, setHistoryFilters] = useState([{filter: orderByDate, filterName: 'orderByDate', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {category: ['Laptops']}}])
+  const [productsCategories, setProductsCategories] = useState([])
+  const [productsFilters, setProductsFilters] = useState([{filter: orderByPrice, filterName: 'orderByPrice', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {}}])
+  const [historyFilters, setHistoryFilters] = useState([{filter: orderByDate, filterName: 'orderByDate', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {}}])
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [filteredHistory, setFilteredHistory] = useState(history)
   const productsPerPage = 16
@@ -51,6 +52,7 @@ const App = () => {
 
   useEffect(() => {
     Object.keys(user).length > 0 && setLoading(false)
+    
   }, [user])
 
   useEffect(() => {
@@ -71,6 +73,15 @@ const App = () => {
       setFilteredProducts(prevState => filter(prevState, params))
     })
   }, [productsFilters, products])
+
+  useEffect(() => {
+    console.log(productsFilters)
+  }, [productsFilters])
+
+  useEffect(() => {
+    setProductsCategories(products.map(product => product.category).filter((v,i,a) => a.indexOf(v) === i))
+    
+  }, [products])
 
   useEffect(() => {
     setFilteredHistory(history)
@@ -107,7 +118,8 @@ const App = () => {
     historyPageRange,
     historyMaxPage,
     historyPage,
-    setHistoryPage
+    setHistoryPage,
+    productsCategories
     }
 
   return (
