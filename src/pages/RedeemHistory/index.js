@@ -11,7 +11,7 @@ const RedeemHistory = () => {
         const doFetch = ()=>{
             fetchHistory(endpoint + '/user/history')
         }
-        
+        doFetch();
     },[fetchHistory])
     
     return (
