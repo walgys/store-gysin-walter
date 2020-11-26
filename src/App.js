@@ -49,8 +49,11 @@ const App = () => {
   const historyMaxPage = Math.ceil(filteredHistory.length / historyProductsPerPage)
   
   useEffect(() => { 
-    fetchUser(endpoint + '/user/me')  
-  },[])
+    const doFetch = () =>{
+      fetchUser(endpoint + '/user/me')  
+    }
+    doFetch()
+  },[fetchUser])
 
   useEffect(() => {
     Object.keys(user).length > 0 && setUserLoading(false)

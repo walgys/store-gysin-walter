@@ -10,9 +10,14 @@ const Products = () => {
 
     
     const {productsLoading, fetchProducts} = useContext(appContext)
-    useEffect( () => { 
-        fetchProducts(endpoint + '/products');
-    },[])
+    useEffect( () => {
+        const doFetch = () =>{
+           fetchProducts(endpoint + '/products');
+        }
+
+        doFetch();
+        
+    },[fetchProducts])
 
     return (
         <>

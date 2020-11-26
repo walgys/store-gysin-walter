@@ -8,8 +8,11 @@ import { endpoint } from '../../utils'
 const RedeemHistory = () => {
     const {fetchHistory} = useContext(appContext)
     useEffect(() => {
-        fetchHistory(endpoint + '/user/history')
-    },[])
+        const doFetch = ()=>{
+            fetchHistory(endpoint + '/user/history')
+        }
+        
+    },[fetchHistory])
     
     return (
         <HistoryContainer />
