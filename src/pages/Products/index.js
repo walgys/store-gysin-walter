@@ -11,9 +11,9 @@ const Products = () => {
     
     const {productsLoading, fetchProducts} = useContext(appContext)
     const useMountEffect = (fun) => useEffect(fun, [])
-    const doFetch = useCallback(() => {
-           return fetchProducts(endpoint + '/products');
-        },[fetchProducts])
+    const doFetch = () => {
+        fetchProducts(endpoint + '/products');
+        }
 
     useMountEffect(doFetch)
 

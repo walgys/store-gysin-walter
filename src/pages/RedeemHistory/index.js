@@ -7,13 +7,12 @@ import { endpoint } from '../../utils'
 
 const RedeemHistory = () => {
     const {fetchHistory} = useContext(appContext)
-    const doFetch = useCallback(() => {
-            fetchHistory(endpoint + '/user/history')
-        },[fetchHistory])
+    const useMountEffect = (fun) => useEffect(fun, [])
+    const doFetch = () => {
+        fetchHistory(endpoint + '/user/history')
+        }
 
-    useEffect(() => {
-        doFetch();
-    },[doFetch])
+    useMountEffect(doFetch)
     
     return (
         <HistoryContainer />

@@ -47,14 +47,12 @@ const App = () => {
   const credits = user.points
   const maxPage = Math.ceil(filteredProducts.length / productsPerPage)
   const historyMaxPage = Math.ceil(filteredHistory.length / historyProductsPerPage)
-  const doFetch = useCallback(() => {
+  const useMountEffect = (fun) => useEffect(fun, [])
+  const doFetch = () => {
       fetchUser(endpoint + '/user/me')  
-    },[fetchUser])
+    }
 
-  useEffect(() => { 
-    
-    doFetch()
-  },[doFetch])
+  useMountEffect(doFetch)
 
   useEffect(() => {
     Object.keys(user).length > 0 && setUserLoading(false)
