@@ -5,11 +5,11 @@ import {redeemItem, endpoint} from '../../utils'
 import {RedeemModalStyled} from './styles/redeemmodal'
 
 const RedeemModal = (props) => {
-    const {toast, productId} = props
+    const {toast, productId, productName} = props
     const {setRedeemModal, fetchUser} = useContext(appContext)
 
     
-    const onClick = (productId)=>{
+    const onClick = (productId, productName)=>{
         setRedeemModal(false)
         
         const redeem = async (productId)=>{ 
@@ -25,7 +25,7 @@ const RedeemModal = (props) => {
             const success = await redeemItem(productId)
              
             if (success){
-                toast.success('Redeem Successful, the product is yours.',{
+                toast.success(`Redeem Successful, ${productName} is yours.`,{
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -56,7 +56,7 @@ const RedeemModal = (props) => {
                 <span onClick={()=>setRedeemModal(false)} className="close">&times;</span>
                 <h4>Are you sure ?</h4>
                 <div className='buttons-container'>
-                    <h5 onClick={()=>onClick(productId)}>Redeem</h5>
+                    <h5 onClick={()=>onClick(productId, productName)}>Redeem</h5>
                     <h5 onClick={()=>setRedeemModal(false)}>Cancel</h5>
                 </div>
             </div>

@@ -5,11 +5,12 @@ import { appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
 import PriceFilter from '../../components/PriceFilter'
 import CategoryFilter from '../../components/CategoryFilter'
+import CardSkeleton from '../../components/Skeletons/CardSkeleton'
 
 
 
 
-const Products = () => {
+const Products = (props) => {
     const {
          filteredProducts,
          setPageRange,
@@ -20,10 +21,12 @@ const Products = () => {
          credits,
          setCreditAddModal,
          setRedeemModal,
-         setProductId } = useContext(appContext)
-    const onRedeemClick = (productId) => {
+         setProductId,
+         setProductName } = useContext(appContext)
+    const onRedeemClick = (productId, productName) => {
         setRedeemModal(true)
         setProductId(productId)
+        setProductName(productName)
     }
     return (
         <>
@@ -42,10 +45,10 @@ const Products = () => {
              </NavigationBar.filters>
          </NavigationBar>
         <ProductsContainer>
-            {filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{
-                const iconButton = <Card.IconButton onClick={()=>onRedeemClick(product._id)}></Card.IconButton>
+            {props.loading ? [...Array(16)].map(card => <CardSkeleton />) : filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{
+                const iconButton = <Card.IconButton onClick={()=>onRedeemClick(product._id, product.name)}></Card.IconButton>
                 const notEnoughButton = <Card.notEnoughButton onClick={()=>setCreditAddModal(true)}>{product.cost - credits}</Card.notEnoughButton>
-                const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id)}>Redeem Now</Card.RedeemButton>
+                const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id, product.name )}>Redeem Now</Card.RedeemButton>
                 const addCreditsButton = <Card.RedeemButton onClick={()=>setCreditAddModal(true)}>Add More Credits</Card.RedeemButton>
                 return(
                     <Card key={product._id}>

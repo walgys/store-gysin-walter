@@ -9,17 +9,15 @@ import Jumbo from '../../components/Jumbo'
 const Products = () => {
 
     
-    const {loading, fetchProducts} = useContext(appContext)
+    const {productsLoading, fetchProducts} = useContext(appContext)
     useEffect( () => { 
         fetchProducts(endpoint + '/products');
     },[])
 
     return (
         <>
-                <Jumbo category={'ELECTRONICS'} />
-                {loading ? <p>Loading...</p> : 
-                    
-                    <ProductsContainer />}
+                <Jumbo category={'ELECTRONICS'} />  
+                    <ProductsContainer loading={productsLoading} />
                 </>  
         
         

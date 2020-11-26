@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const FilterPriceStyled = styled.div`
     display:flex;
@@ -7,7 +7,7 @@ export const FilterPriceStyled = styled.div`
 
 export const FilterPriceButton = styled.h5`
     background:${props => props.active ? '#0ad4fa' : '#ededed'};
-    margin-left: 20px;
+    margin-right: 20px;
     border-radius:100px;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 

@@ -25,10 +25,12 @@ const Container = styled.div`
 
 const App = () => {
   const [user, fetchUser] = useFetch()
-  const [loading, setLoading] = useState(true)
+  const [userLoading, setUserLoading] = useState(true)
+  const [productsLoading, setProductsLoading] = useState(true)
   const [creditAddModal, setCreditAddModal] = useState(false)
   const [redeemModal, setRedeemModal] = useState(false)
   const [productId, setProductId] = useState('')
+  const [productName, setProductName] = useState('')
   const [products, fetchProducts] = useFetch([])
   const [history, fetchHistory] = useFetch([])
   const [productsCategories, setProductsCategories] = useState([])
@@ -51,9 +53,14 @@ const App = () => {
   },[])
 
   useEffect(() => {
-    Object.keys(user).length > 0 && setLoading(false)
+    Object.keys(user).length > 0 && setUserLoading(false)
     
   }, [user])
+
+  useEffect(() => {
+    Object.keys(products).length > 0 && setProductsLoading(false)
+    
+  }, [products])
 
   useEffect(() => {
     if(page === 1 ) setPageRange({start:0, end:productsPerPage})
@@ -97,7 +104,8 @@ const App = () => {
     fetchUser,
     creditAddModal,
     setCreditAddModal,
-    loading,
+    userLoading,
+    productsLoading,
     filteredProducts,
     fetchProducts,
     page,
@@ -110,6 +118,7 @@ const App = () => {
     redeemModal,
     setRedeemModal,
     setProductId,
+    setProductName,
     filteredHistory,
     fetchHistory,
     setHistoryPageRange,
@@ -129,8 +138,8 @@ const App = () => {
            <Router>
               <ToastContainer position={'bottom-right'} autoClose={3000}/>
           {creditAddModal && <CreditAddModal toast={toast}/>}
-          {redeemModal && <RedeemModal productId={productId} toast={toast}/>}
-          {loading ? <p>Loading...</p> : <Header />}
+          {redeemModal && <RedeemModal productId={productId} productName={productName} toast={toast}/>}
+          <Header loading={userLoading} />
              <Switch>
                <Route exact path='/'>
                  <Redirect to='/products' />

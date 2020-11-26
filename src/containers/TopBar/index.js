@@ -1,28 +1,19 @@
 import React from 'react'
 import UserBar from '../../components/UserBar'
-import styled from 'styled-components/macro'
 import logo from '../../img/aerolab-logo.svg'
 import {Link} from 'react-router-dom'
+import { Bar, LogoImg } from './styles/TopBar'
+import UserBarSkeleton from '../../components/Skeletons/UserBarSkeleton'
 
-const Bar = styled.div`
-display: flex;
-justify-content: space-between;
-`
-const LogoImg = styled.img`
 
-margin: 22px 0px 22px 42px;
-width: 39px;
-height: 36px;
-`
-
-const TopBar = () => {
+const TopBar = (props) => {
     return (
         <Bar>
             <Link to={'/'} >
               <LogoImg src={logo} alt="logo" />  
             </Link>
             
-            <UserBar />
+            {props.loading ? <UserBarSkeleton /> : <UserBar />}
         </Bar>
     )
 }

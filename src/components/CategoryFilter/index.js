@@ -32,14 +32,14 @@ const CategoryFilter = () => {
     }
 
     return (
-        <InputContainerStyled>
+        <InputContainerStyled onMouseLeave={() => setDisplay(false)}>
             <input 
                 id='filterInput'
                 onClick={() => setDisplay(!display)}
                 onChange={event => setSearch(event.target.value)}
                 placeholder='Filtrar por: ' 
             />
-            {display && <OptionsContainerStyled >{options.filter(
+            {display && <OptionsContainerStyled  >{options.filter(
                 option => option.toLowerCase().indexOf(search.toLowerCase()) > -1 )
                 .map((v,i) => <div key={i} onClick={()=>addCategory(v)} >{v}</div>)}
                 </OptionsContainerStyled>}

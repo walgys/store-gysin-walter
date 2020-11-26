@@ -8,14 +8,16 @@ export const OptionsContainerStyled = styled.div`
   background-color: whitesmoke;
   left: 0px;
   top: calc(39% + 20px);
-  width: 100%;
-  z-index: 12;
+  width: 173px;
+  padding-left: 3px;
+  z-index: 10;
 `
 export const InputContainerStyled = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     & input{
+        width: 170px;
         position: relative;
         top: 39%;
     }
