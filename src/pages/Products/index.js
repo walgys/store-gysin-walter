@@ -12,7 +12,7 @@ const Products = () => {
     const {productsLoading, fetchProducts} = useContext(appContext)
     useEffect( () => { 
         fetchProducts(endpoint + '/products');
-    })
+    },[])
 
     return (
         <>
