@@ -50,7 +50,7 @@ const App = () => {
   
   useEffect(() => { 
     fetchUser(endpoint + '/user/me')  
-  },[fetchUser])
+  })
 
   useEffect(() => {
     Object.keys(user).length > 0 && setUserLoading(false)
