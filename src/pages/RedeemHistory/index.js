@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback } from 'react'
+import React, { useEffect, useContext} from 'react'
 import  HistoryContainer from '../../containers/HistoryContainer/'
 import { appContext } from '../../contexts'
 import { endpoint } from '../../utils'

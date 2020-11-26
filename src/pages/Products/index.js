@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback} from 'react'
+import React, { useContext, useEffect} from 'react'
 import ProductsContainer from '../../containers/ProductsContainer';
 import {appContext} from '../../contexts'
 import {endpoint} from '../../utils'
