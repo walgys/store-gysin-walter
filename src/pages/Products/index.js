@@ -11,7 +11,7 @@ const Products = () => {
     
     const {productsLoading, fetchProducts} = useContext(appContext)
     const doFetch = useCallback(() => {
-           fetchProducts(endpoint + '/products');
+           return fetchProducts(endpoint + '/products');
         },[fetchProducts])
     useEffect( () => {
         
