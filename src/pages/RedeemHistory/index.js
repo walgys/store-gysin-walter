@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useCallback } from 'react'
 import  HistoryContainer from '../../containers/HistoryContainer/'
 import { appContext } from '../../contexts'
 import { endpoint } from '../../utils'
@@ -7,12 +7,13 @@ import { endpoint } from '../../utils'
 
 const RedeemHistory = () => {
     const {fetchHistory} = useContext(appContext)
-    useEffect(() => {
-        const doFetch = ()=>{
+    const doFetch = useCallback(() => {
             fetchHistory(endpoint + '/user/history')
-        }
+        },[fetchHistory])
+
+    useEffect(() => {
         doFetch();
-    },[fetchHistory])
+    },[doFetch])
     
     return (
         <HistoryContainer />

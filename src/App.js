@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import styled from 'styled-components/macro'
 import {endpoint, useFetch, orderByPrice, orderByDate, filterCategory} from './utils'
@@ -47,13 +47,14 @@ const App = () => {
   const credits = user.points
   const maxPage = Math.ceil(filteredProducts.length / productsPerPage)
   const historyMaxPage = Math.ceil(filteredHistory.length / historyProductsPerPage)
-  
-  useEffect(() => { 
-    const doFetch = () =>{
+  const doFetch = useCallback(() => {
       fetchUser(endpoint + '/user/me')  
-    }
+    },[fetchUser])
+
+  useEffect(() => { 
+    
     doFetch()
-  },[fetchUser])
+  },[doFetch])
 
   useEffect(() => {
     Object.keys(user).length > 0 && setUserLoading(false)
