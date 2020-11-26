@@ -9,7 +9,7 @@ const RedeemHistory = () => {
     const {fetchHistory} = useContext(appContext)
     useEffect(() => {
         fetchHistory(endpoint + '/user/history')
-    },[])
+    },[fetchHistory])
     
     return (
         <HistoryContainer />

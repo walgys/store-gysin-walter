@@ -1,9 +1,8 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import ProductsIndex from '../../components/ProductsIndex'
 import Filters from '../../components/Filters'
 import Pagination from '../../components/Pagination'
 import {NavigationBarStyled} from './styles/navigationbar'
-import { appContext } from '../../contexts'
 
 
 const NavigationBar = (props) => {
