@@ -2,12 +2,17 @@ import styled from 'styled-components/macro'
 
 export const FilterPriceStyled = styled.div`
     display:flex;
+    width:350px;
     justify-content: space-between;
+    margin: 0px 20px 0px 20px;
+    @media (max-width: 534px){
+        flex-direction: column;
+        margin: 0px 10px 0px 10px;
+    }
 `
 
-export const FilterPriceButton = styled.h5`
+export const FilterPriceButton = styled.div`
     background:${props => props.active ? '#0ad4fa' : '#ededed'};
-    margin-right: 20px;
     border-radius:100px;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
@@ -17,9 +22,27 @@ export const FilterPriceButton = styled.h5`
     user-select: none; 
     text-align: center;
     justify-content: center;
-    width:172px;
-    height:48px;
-    line-height: 48px;
+    
+    @media (max-width: 534px){
+        font-size: 12px;
+        width:100px;
+        height:24px;
+        line-height: 24px;
+    }
+    @media (min-width: 535px){
+        font-size: 12px;
+        width:100px;
+        height:48px;
+        line-height: 48px;
+    }
+    @media (min-width: 768px){
+        font-size: 14px;
+        width:140px;
+    }
+    @media (min-width: 960px){
+        font-size: 20px;
+        width:172px;
+    }
     :hover{
         cursor: pointer;
     }

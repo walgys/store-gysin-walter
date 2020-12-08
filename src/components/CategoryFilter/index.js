@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useContext, useEffect} from 'react'
 import { appContext } from '../../contexts'
-import { InputContainerStyled, OptionsContainerStyled } from './styles/categoryfilter'
+import { CategoryFilterStyled , PillsContainerStyled , PillCloseStyled,  PillStyled,  InputContainerStyled, InputStyled, OptionsContainerStyled } from './styles/categoryfilter'
 
 const CategoryFilter = () => {
     const [display, setDisplay] = useState(false)
@@ -32,8 +32,9 @@ const CategoryFilter = () => {
     }
 
     return (
-        <InputContainerStyled onMouseLeave={() => setDisplay(false)}>
-            <input 
+        <CategoryFilterStyled>
+            <InputContainerStyled onMouseLeave={() => setDisplay(false)}>
+            <InputStyled 
                 id='filterInput'
                 onClick={() => setDisplay(!display)}
                 onChange={event => setSearch(event.target.value)}
@@ -44,6 +45,13 @@ const CategoryFilter = () => {
                 .map((v,i) => <div key={i} onClick={()=>addCategory(v)} >{v}</div>)}
                 </OptionsContainerStyled>}
         </InputContainerStyled>
+        <PillsContainerStyled>
+            <PillStyled>Computers<PillCloseStyled>X</PillCloseStyled></PillStyled>
+            <PillStyled>Phones<PillCloseStyled>X</PillCloseStyled></PillStyled>
+            <PillStyled>Laptops<PillCloseStyled>X</PillCloseStyled></PillStyled>
+        </PillsContainerStyled>
+        </CategoryFilterStyled>
+        
     )
 }
 

@@ -1,26 +1,24 @@
 import React from 'react'
 import ProductsIndex from '../../components/ProductsIndex'
-import Filters from '../../components/Filters'
+import PriceFilter from '../../components/PriceFilter'
+import CategoryFilter from '../../components/CategoryFilter'
 import Pagination from '../../components/Pagination'
-import {NavigationBarStyled} from './styles/navigationbar'
+import {NavigationBarStyled, NavigationContainerStyled} from './styles/navigationbar'
 
 
 const NavigationBar = (props) => {
     const {page, setPage, maxPage, children} = props
     return (
-        <NavigationBarStyled>
+        <NavigationContainerStyled>
+            <NavigationBarStyled>
             <ProductsIndex {...props} />
-            {children}
+            <PriceFilter />
             <Pagination page={page} setPage={setPage} maxPage={maxPage} />
         </NavigationBarStyled>
+        <CategoryFilter />
+        </NavigationContainerStyled>
+        
     )
 }
-
-const NavigationFilters = ({children, ...restProps}) => {
-    
-    return  <Filters>{children}</Filters>
-}
-
-NavigationBar.filters = NavigationFilters
 
 export default NavigationBar

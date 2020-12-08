@@ -1,9 +1,8 @@
 import styled from 'styled-components/macro'
 
 export const HeaderStyled = styled.div`
-    width: 100%;
     max-width: 1440px;
-    background:#ffffff;
+    width: 100%;
     z-index:11;
     position: fixed;
     background: white;

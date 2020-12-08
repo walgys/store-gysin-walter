@@ -3,8 +3,6 @@ import {Card} from '../../components/Card'
 import {ProductsContainer} from './styles/productcontainer'
 import { appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
-import PriceFilter from '../../components/PriceFilter'
-import CategoryFilter from '../../components/CategoryFilter'
 import CardSkeleton from '../../components/Skeletons/CardSkeleton'
 
 
@@ -38,14 +36,9 @@ const Products = (props) => {
             maxPage={maxPage}
             page={page} 
             setPage={setPage}
-         >
-             <NavigationBar.filters>
-                 <PriceFilter />
-                 <CategoryFilter />
-             </NavigationBar.filters>
-         </NavigationBar>
+          />
         <ProductsContainer>
-            {props.loading ? [...Array(16)].map(card => <CardSkeleton />) : filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{
+            {props.loading ? [...Array(16)].map((card, idx) => <CardSkeleton key={idx} />) : filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{
                 const iconButton = <Card.IconButton onClick={()=>onRedeemClick(product._id, product.name)}></Card.IconButton>
                 const notEnoughButton = <Card.notEnoughButton onClick={()=>setCreditAddModal(true)}>{product.cost - credits}</Card.notEnoughButton>
                 const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id, product.name )}>Redeem Now</Card.RedeemButton>
