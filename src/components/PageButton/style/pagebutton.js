@@ -4,6 +4,7 @@ export const PageButtonStyled = styled.div`
     border:${props => props.active===true ? "2px solid #616161" : "2px solid #d9d9d9"};
     width:100%;
     height:100%;
+    margin: 3px;
     border-radius:100%;
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 

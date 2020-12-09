@@ -18,9 +18,31 @@ position: relative;
     font-family: 'Source Sans Pro', sans-serif; 
     color: white;
     position: absolute;
-    font-size: 3rem;
     font-weight: 700;    
-    bottom: 10%;
-    left: 10%;
+
+    
 }
+@media (max-width: 534px){
+    & h1{
+        font-size: 1.5rem;   
+        bottom: 5%;
+        left: 5%;
+    }      
+}
+@media (min-width: 535px){
+    & h1{
+        font-size: 2rem;   
+        bottom: 7%;
+        left: 7%;
+    }    
+}
+@media (min-width: 768px){
+    & h1 {
+        font-size: 3rem;
+        font-weight: 700;    
+        bottom: 10%;
+        left: 10%;
+    }
+}
+
 `

@@ -46,9 +46,10 @@ const CategoryFilter = () => {
                 </OptionsContainerStyled>}
         </InputContainerStyled>
         <PillsContainerStyled>
-            <PillStyled>Computers<PillCloseStyled>X</PillCloseStyled></PillStyled>
-            <PillStyled>Phones<PillCloseStyled>X</PillCloseStyled></PillStyled>
-            <PillStyled>Laptops<PillCloseStyled>X</PillCloseStyled></PillStyled>
+            <PillStyled>{"Computers"}<PillCloseStyled>X</PillCloseStyled></PillStyled>
+            <PillStyled>{"Phones"}<PillCloseStyled>X</PillCloseStyled></PillStyled>
+            <PillStyled>{"Laptops"}<PillCloseStyled>X</PillCloseStyled></PillStyled>
+            <PillStyled>{"Tablets & E-readers"}<PillCloseStyled>X</PillCloseStyled></PillStyled>    
         </PillsContainerStyled>
         </CategoryFilterStyled>
         

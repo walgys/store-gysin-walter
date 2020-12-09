@@ -8,7 +8,7 @@ export const OptionsContainerStyled = styled.div`
   background-color: whitesmoke;
   left: 0px;
   top: calc(39% + 15px);
-  width: 173px;
+  width: 153px;
   padding-left: 3px;
   z-index: 10;
 `
@@ -17,9 +17,12 @@ export const InputContainerStyled = styled.div`
     flex-direction: column;
 `
 export const InputStyled = styled.input`
-    width: 170px;
+    width: 150px;
     position: relative;
     top: 39%;
+    @media (max-width: 534px){
+      width: 150px;
+    }
 `
 export const CategoryFilterStyled = styled.div`
     display: flex;
@@ -28,6 +31,10 @@ export const CategoryFilterStyled = styled.div`
     flex-grow: 1;
     align-self: flex-start;
     align-items: center;
+    @media (max-width: 534px){
+      flex-direction: column;
+      justify-content: space-between;
+    }
 `
 export const PillsContainerStyled = styled.div`
   width: 90%;
@@ -46,6 +53,12 @@ export const PillStyled = styled.div`
   width: fit-content;
   border-radius: 15px;
   max-width: 200px;
+  @media (max-width: 320px){
+    font-size: 0.6rem;
+  }
+  @media (min-width: 321px){
+    font-size: 0.7rem;
+  }
 `
 export const PillCloseStyled = styled.span`
   margin-left: 5px;
