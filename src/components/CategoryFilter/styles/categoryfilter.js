@@ -49,6 +49,7 @@ export const PillStyled = styled.div`
   background: silver;
   display: flex;
   margin: 5px;
+  align-items: center;
   padding: 5px 10px 5px 10px;
   width: fit-content;
   border-radius: 15px;
@@ -59,8 +60,14 @@ export const PillStyled = styled.div`
   @media (min-width: 321px){
     font-size: 0.7rem;
   }
+  @media (min-width: 535px){
+    font-size: 0.9rem;
+  }
 `
 export const PillCloseStyled = styled.span`
   margin-left: 5px;
   font-weight: 600;
+  :hover{
+    cursor: pointer;
+  }
 `

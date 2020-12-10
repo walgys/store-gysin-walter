@@ -200,7 +200,7 @@ export const ContainerStyled = styled.div`
 `
 
 export const HistoryContainerStyled = styled.div`
-    width: 100%;
+    width: 50%;
     height: 254px;  
     padding: 12px;
     border-radius: 5px;

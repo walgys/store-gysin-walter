@@ -7,7 +7,7 @@ const CategoryFilter = () => {
     const [display, setDisplay] = useState(false)
     const [options, setOptions] = useState([])
     const [search, setSearch] = useState('')
-    const { productsCategories, setProductsFilters  } = useContext(appContext)
+    const { productsCategories, setProductsCategories,  setProductsFilters, productsFilters  } = useContext(appContext)
 
     useEffect(() => {
         setOptions(productsCategories)
@@ -27,8 +27,38 @@ const CategoryFilter = () => {
                 }
                     return filter
             }
-        ) 
-        ) 
+        )
+         
+        )
+        setOptions(categories => categories.filter(category => category !== cat))
+        
+    }
+    const getCategoryPills = () => {
+        var filter = productsFilters.find(f => f.filterName === 'filterCategory')
+        if (filter.params.category !== undefined){
+            return filter.params.category.sort().map(cat => <PillStyled key={cat}>{cat}<PillCloseStyled onClick={() => removeCat(cat)}>X</PillCloseStyled></PillStyled> )
+        }
+
+    }
+
+    const removeCat = (cat) => {
+        setProductsFilters(filters => filters.map(filter => {
+            if (filter.filterName === 'filterCategory'){
+                if(filter.params.category){
+                    var categories = filter.params.category.filter(category => category !== cat)
+                    if(categories.length > 0){
+                        return {...filter, params: {category: categories }}
+                    }else{
+                        return {...filter, params: {}}
+                    }
+                }
+               
+            }
+                return filter
+        }
+    )
+    )
+    setOptions(categories => [...categories, cat])
     }
 
     return (
@@ -40,16 +70,13 @@ const CategoryFilter = () => {
                 onChange={event => setSearch(event.target.value)}
                 placeholder='Filtrar por: ' 
             />
-            {display && <OptionsContainerStyled  >{options.filter(
+            {display && <OptionsContainerStyled  >{options.sort().filter(
                 option => option.toLowerCase().indexOf(search.toLowerCase()) > -1 )
                 .map((v,i) => <div key={i} onClick={()=>addCategory(v)} >{v}</div>)}
                 </OptionsContainerStyled>}
         </InputContainerStyled>
         <PillsContainerStyled>
-            <PillStyled>{"Computers"}<PillCloseStyled>X</PillCloseStyled></PillStyled>
-            <PillStyled>{"Phones"}<PillCloseStyled>X</PillCloseStyled></PillStyled>
-            <PillStyled>{"Laptops"}<PillCloseStyled>X</PillCloseStyled></PillStyled>
-            <PillStyled>{"Tablets & E-readers"}<PillCloseStyled>X</PillCloseStyled></PillStyled>    
+            {getCategoryPills()}  
         </PillsContainerStyled>
         </CategoryFilterStyled>
         

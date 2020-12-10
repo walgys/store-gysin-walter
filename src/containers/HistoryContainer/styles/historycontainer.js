@@ -6,7 +6,9 @@ export const HistoryContainer = styled.div`
     margin-left: 5%;
     margin-right: 5%;
     flex-direction: column;
+    align-items: center;
     display: flex;
+    flex-wrap: wrap;
 `
 
 export const PageContainer = styled.div`

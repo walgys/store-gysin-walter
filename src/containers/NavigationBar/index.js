@@ -7,12 +7,12 @@ import {NavigationBarStyled, NavigationContainerStyled} from './styles/navigatio
 
 
 const NavigationBar = (props) => {
-    const {page, setPage, maxPage, children} = props
+    const {page, setPage, maxPage, priceFilter, dateFilter} = props
     return (
         <NavigationContainerStyled>
             <NavigationBarStyled>
             <ProductsIndex {...props} />
-            <PriceFilter />
+            {priceFilter && <PriceFilter />}
             <Pagination page={page} setPage={setPage} maxPage={maxPage} />
         </NavigationBarStyled>
         <CategoryFilter />

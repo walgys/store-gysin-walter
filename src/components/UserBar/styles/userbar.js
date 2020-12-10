@@ -24,10 +24,10 @@ user-select: none;
     margin-right: 10px;
     font-weight: 500;
     padding-bottom: 2px;
-    @media (max-width: 534px){
+    @media (max-width: 399px){
         font-size: 1.3rem;
     }
-    @media (min-width: 535px){
+    @media (min-width: 400px){
         font-size: 1.5rem;
     }
     @media (min-width: 768px){

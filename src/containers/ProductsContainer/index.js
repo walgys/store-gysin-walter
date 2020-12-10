@@ -36,6 +36,7 @@ const Products = (props) => {
             maxPage={maxPage}
             page={page} 
             setPage={setPage}
+            priceFilter={true}
           />
         <ProductsContainer>
             {props.loading ? [...Array(16)].map((card, idx) => <CardSkeleton key={idx} />) : filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{

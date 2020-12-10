@@ -46,7 +46,7 @@ const History = () => {
         />
        <HistoryContainer>
            {filteredHistory.slice(historyPageRange.start, historyPageRange.end).map(product=>{
-               const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id)}>Redeem Now</Card.RedeemButton>
+               const redeemButton = <Card.RedeemButton onClick={()=>onRedeemClick(product._id)}>Redeem Again</Card.RedeemButton>
                return(
                    <Card key={product.createDate + product._id}>
                        <Card.HistoryContainer>

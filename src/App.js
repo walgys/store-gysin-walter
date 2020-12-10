@@ -34,8 +34,11 @@ const App = () => {
   const [products, fetchProducts] = useFetch([])
   const [history, fetchHistory] = useFetch([])
   const [productsCategories, setProductsCategories] = useState([])
+  
+  //create an array of filter objects to be applied to products in a useEffect hook giving filteredProducts as result
   const [productsFilters, setProductsFilters] = useState([{filter: orderByPrice, filterName: 'orderByPrice', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {}}])
   const [historyFilters, setHistoryFilters] = useState([{filter: orderByDate, filterName: 'orderByDate', params: {order: 'Descendant'}}, {filter: filterCategory, filterName: 'filterCategory', params: {}}])
+  
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [filteredHistory, setFilteredHistory] = useState(history)
   const productsPerPage = 16
@@ -126,11 +129,13 @@ const App = () => {
     setHistoryPageRange,
     setHistoryFilters,
     setProductsFilters,
+    productsFilters,
     historyPageRange,
     historyMaxPage,
     historyPage,
     setHistoryPage,
-    productsCategories
+    productsCategories,
+    setProductsCategories
     }
 
   return (
