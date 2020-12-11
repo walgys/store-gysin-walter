@@ -11,6 +11,9 @@ export const OptionsContainerStyled = styled.div`
   width: 153px;
   padding-left: 3px;
   z-index: 10;
+  :hover{
+    cursor: pointer;
+  }
 `
 export const InputContainerStyled = styled.div`
     position: relative;
@@ -54,6 +57,9 @@ export const PillStyled = styled.div`
   width: fit-content;
   border-radius: 15px;
   max-width: 200px;
+  :hover{
+    cursor: ${props => props.cursor ? props.cursor : 'normal'}
+  }
   @media (max-width: 320px){
     font-size: 0.6rem;
   }

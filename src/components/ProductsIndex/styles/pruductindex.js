@@ -9,6 +9,12 @@ export const ProductIndexStyled = styled.h2`
     line-height:48px;
     text-align:left;
     border-right: 1px dotted black;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
    
     @media (max-width: 399px){
         font-size: 10px;

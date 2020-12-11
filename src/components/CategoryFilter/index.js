@@ -37,7 +37,7 @@ const CategoryFilter = () => {
         var filter = productsFilters.find(f => f.filterName === 'filterCategory')
         if (filter.params.category !== undefined){
             return <>
-                <PillStyled background={'#0ad4fa'} onClick={() => removeCat('all')}>Clear all</PillStyled>
+                <PillStyled cursor={'pointer'} background={'#0ad4fa'} onClick={() => removeCat('all')}>Clear all</PillStyled>
             {filter.params.category.sort().map(cat => <PillStyled key={cat}>{cat}<PillCloseStyled onClick={() => removeCat(cat)}>X</PillCloseStyled></PillStyled> )}
             </>
         }
@@ -66,7 +66,7 @@ const CategoryFilter = () => {
         }
     )
     )
-    setOptions(categories => [...categories, cat])
+    if (cat !== 'all') setOptions(categories => [...categories, cat])
     }
 
     return (
@@ -76,7 +76,8 @@ const CategoryFilter = () => {
                 id='filterInput'
                 onClick={() => setDisplay(!display)}
                 onChange={event => setSearch(event.target.value)}
-                placeholder='Filtrar por: ' 
+                placeholder='Filtrar por: '
+                value={search}
             />
             {display && <OptionsContainerStyled  >{options.sort().filter(
                 option => option.toLowerCase().indexOf(search.toLowerCase()) > -1 )

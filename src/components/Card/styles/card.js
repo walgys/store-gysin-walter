@@ -238,7 +238,12 @@ export const CategoryStyled = styled.h5`
     font-family: 'Source Sans Pro', sans-serif;
     font-size: ${props => props.fontSize ? props.fontSize : '16px'};
     padding-top: ${props => props.paddingTop ? props.paddingTop : '19px'};
-    
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
 `
 export const TextStyled = styled.h5`
     margin: 3px 12px 3px 12px;
@@ -246,6 +251,12 @@ export const TextStyled = styled.h5`
     color:#616161;
     font-size: ${props => props.fontSize ? props.fontSize : '18px'};
     font-weight: 500;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
 `
 export const FlexContainerStyled = styled.div`
     display: flex;
