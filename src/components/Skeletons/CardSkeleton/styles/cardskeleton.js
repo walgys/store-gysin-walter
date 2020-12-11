@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 
 
 export const ContainerStyled = styled.div`
-    width: 254px;
+    width: ${props => props.width ? props.width : '254px'};
     height: 254px;  
     padding: 12px;
     box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);

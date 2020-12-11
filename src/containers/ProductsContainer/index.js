@@ -36,7 +36,8 @@ const Products = (props) => {
             maxPage={maxPage}
             page={page} 
             setPage={setPage}
-            priceFilter={true}
+            priceFilter
+            categoryFilter
           />
         <ProductsContainer>
             {props.loading ? [...Array(16)].map((card, idx) => <CardSkeleton key={idx} />) : filteredProducts.slice(pageRange.start, pageRange.end).map(product=>{
@@ -47,9 +48,13 @@ const Products = (props) => {
                 return(
                     <Card key={product._id}>
                         <Card.Container>
-                            <Card.Image src={product.img.url}></Card.Image>
-                            <Card.Category>{product.category}</Card.Category>
-                            <Card.Text>{product.name}</Card.Text>
+                            <Card.FlexContainer justifyContent={'center'}>
+                                <Card.Image src={product.img.url}></Card.Image>
+                            </Card.FlexContainer>
+                            <Card.Footer>
+                                <Card.Category>{product.category}</Card.Category>
+                                <Card.Text>{product.name}</Card.Text>
+                            </Card.Footer> 
                             {parseInt(credits) >= parseInt(product.cost) ? iconButton : notEnoughButton }
                             <Card.Redeem>
                                 <Card.Price>{product.cost}</Card.Price>

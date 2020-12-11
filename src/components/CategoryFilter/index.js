@@ -7,7 +7,7 @@ const CategoryFilter = () => {
     const [display, setDisplay] = useState(false)
     const [options, setOptions] = useState([])
     const [search, setSearch] = useState('')
-    const { productsCategories, setProductsCategories,  setProductsFilters, productsFilters  } = useContext(appContext)
+    const { productsCategories, setProductsFilters, productsFilters  } = useContext(appContext)
 
     useEffect(() => {
         setOptions(productsCategories)
@@ -36,7 +36,10 @@ const CategoryFilter = () => {
     const getCategoryPills = () => {
         var filter = productsFilters.find(f => f.filterName === 'filterCategory')
         if (filter.params.category !== undefined){
-            return filter.params.category.sort().map(cat => <PillStyled key={cat}>{cat}<PillCloseStyled onClick={() => removeCat(cat)}>X</PillCloseStyled></PillStyled> )
+            return <>
+                <PillStyled background={'#0ad4fa'} onClick={() => removeCat('all')}>Clear all</PillStyled>
+            {filter.params.category.sort().map(cat => <PillStyled key={cat}>{cat}<PillCloseStyled onClick={() => removeCat(cat)}>X</PillCloseStyled></PillStyled> )}
+            </>
         }
 
     }
@@ -45,12 +48,17 @@ const CategoryFilter = () => {
         setProductsFilters(filters => filters.map(filter => {
             if (filter.filterName === 'filterCategory'){
                 if(filter.params.category){
-                    var categories = filter.params.category.filter(category => category !== cat)
-                    if(categories.length > 0){
-                        return {...filter, params: {category: categories }}
-                    }else{
+                    if (cat === 'all'){
                         return {...filter, params: {}}
+                    }else{
+                        var categories = filter.params.category.filter(category => category !== cat)
+                        if(categories.length > 0){
+                            return {...filter, params: {category: categories }}
+                        }else{
+                            return {...filter, params: {}}
+                        }
                     }
+                    
                 }
                
             }

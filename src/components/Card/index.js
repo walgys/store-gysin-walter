@@ -1,5 +1,5 @@
 import React,{createContext, useContext, useState} from 'react'
-import {ContainerStyled, HistoryContainerStyled, CategoryStyled, TextStyled, ImageStyled, IconStyled, RedeemStyled, PriceStyled, RedeemButtonStyled, NotEnoughStyled} from './styles/card'
+import {FooterStyled, FlexContainerStyled, ContainerStyled, HistoryContainerStyled, CategoryStyled, TextStyled, ImageStyled, IconStyled, RedeemStyled, PriceStyled, RedeemButtonStyled, NotEnoughStyled} from './styles/card'
 import buyBlueIcon from  '../../icons/buy-blue.svg'
 import buyWhiteIcon from  '../../icons/buy-white2.svg'
 import coin from '../../icons/coin.svg'
@@ -37,9 +37,8 @@ const HistoryContainer = ({children, ...restProps}) => {
 }
 
 const Category = ({children, ...restProps}) => {
-    const {hovering} = useContext(cardContext)
     return (
-    <CategoryStyled hovering={hovering} {...restProps}>{children}</CategoryStyled>
+    <CategoryStyled {...restProps}>{children}</CategoryStyled>
     )
 }
 
@@ -90,3 +89,16 @@ Card.notEnoughButton = ({children, ...restProps}) => {
         <NotEnoughStyled {...restProps}><h5>{`You need ${children}`}</h5><img src={coin} alt={'coin'} /></NotEnoughStyled>
     )
 }
+
+Card.FlexContainer = ({children, ...restProps}) => {
+    return (
+        <FlexContainerStyled {...restProps}>{children}</FlexContainerStyled>
+    )
+}
+
+Card.Footer = ({children, ...restProps}) => {
+    return (
+        <FooterStyled {...restProps}>{children}</FooterStyled>
+    )
+}
+

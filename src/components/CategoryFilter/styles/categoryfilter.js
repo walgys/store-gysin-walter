@@ -46,7 +46,7 @@ export const PillsContainerStyled = styled.div`
   //background: red;
 `
 export const PillStyled = styled.div`
-  background: silver;
+  background: ${props => props.background ? props.background : 'lightgrey'};
   display: flex;
   margin: 5px;
   align-items: center;

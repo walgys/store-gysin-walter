@@ -14,8 +14,8 @@ export const PriceStyled = styled.div`
     height: 45px;
     position: absolute;
     display: inline-flex;
-    bottom: 50%;
-    left: 50%;
+    bottom: ${props => props.bottom ? props.bottom : '50%'};
+    left: ${props => props.left ? props.left : '50%'};
     margin-left: -75px;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@ export const PriceStyled = styled.div`
         font-size: 34px;
         line-height: 45px;
         font-weight: 500;
-        color: #ffffff;
+        color: ${props => props.color ? props.color : '#ffffff'};
     }
     & img{
         width: 30px;
@@ -33,8 +33,8 @@ export const PriceStyled = styled.div`
     }
 `
 export const RedeemButtonStyled = styled.h5`
-    background: rgba(255, 255, 255, 1);
-    color: rgba(130, 130,130,1);
+    background: ${props => props.background ? props.background : 'rgba(255, 255, 255, 1)'};
+    color: ${props => props.color ? props.color : 'rgba(130, 130,130,1)'};
     width:228px;
     height:42px;
     border-radius: 25px;
@@ -50,8 +50,8 @@ export const RedeemButtonStyled = styled.h5`
     backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     transform: translateZ(0);
-    bottom: 20%;
-    left: 50%;
+    bottom: ${props => props.bottom ? props.bottom : '20%'};
+    left: ${props => props.left ? props.left : '50%'};
     margin-left: -114px;
     text-align: center;
     line-height: 42px;
@@ -170,8 +170,8 @@ export const IconStyled = styled.div`
 
 
 export const ContainerStyled = styled.div`
-    width: 254px;
-    height: 254px;  
+    width: ${props => props.width ? props.width : '254px'};
+    //height: 254px;  
     padding: 12px;
     box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
     background:#ffffff;
@@ -200,7 +200,7 @@ export const ContainerStyled = styled.div`
 `
 
 export const HistoryContainerStyled = styled.div`
-    width: 50%;
+    width: 300px;
     height: 254px;  
     padding: 12px;
     border-radius: 5px;
@@ -236,16 +236,27 @@ export const CategoryStyled = styled.h5`
     margin: 0px 12px 3px 12px;
     color:#a3a3a3;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 16px;
-    padding-top: 19px;
-    border-top: 1px solid black;
+    font-size: ${props => props.fontSize ? props.fontSize : '16px'};
+    padding-top: ${props => props.paddingTop ? props.paddingTop : '19px'};
+    
 `
 export const TextStyled = styled.h5`
     margin: 3px 12px 3px 12px;
     font-family: 'Source Sans Pro', sans-serif; 
     color:#616161;
-    font-size: 18px;
+    font-size: ${props => props.fontSize ? props.fontSize : '18px'};
     font-weight: 500;
+`
+export const FlexContainerStyled = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: ${props => props.flexDirection ? props.flexDirection : 'row'};
+    justify-content: ${props => props.justifyContent ? props.justifyContent : 'left'}
+`
+
+export const FooterStyled = styled.div`
+    margin: 0px 12px 3px 12px;
+    border-top: 1px solid black;
 `
 
 export const ImageStyled = styled.img`

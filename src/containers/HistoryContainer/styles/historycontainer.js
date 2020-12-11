@@ -5,13 +5,8 @@ export const HistoryContainer = styled.div`
     margin-top: 20px;
     margin-left: 5%;
     margin-right: 5%;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
     display: flex;
     flex-wrap: wrap;
 `
 
-export const PageContainer = styled.div`
-
-    padding-top: 85px;    
-`

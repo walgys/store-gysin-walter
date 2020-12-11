@@ -7,5 +7,5 @@ export const ProductsContainer = styled.div`
     margin-right: 5%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 `

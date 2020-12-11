@@ -68,6 +68,12 @@ const App = () => {
   }, [products])
 
   useEffect(() => {
+    Object.keys(history).length > 0 && setProductsLoading(false)
+    
+  }, [history])
+
+
+  useEffect(() => {
     if(page === 1 ) setPageRange({start:0, end:productsPerPage})
     if(page > 1 && page < maxPage) setPageRange({start: page * productsPerPage, end: (page + 1) * productsPerPage})
     if(page === maxPage) setPageRange({start: (page-1) * productsPerPage, end: page * productsPerPage})  
@@ -86,13 +92,9 @@ const App = () => {
     })
   }, [productsFilters, products])
 
-  useEffect(() => {
-    console.log(productsFilters)
-  }, [productsFilters])
 
   useEffect(() => {
     setProductsCategories(products.map(product => product.category).filter((v,i,a) => a.indexOf(v) === i))
-    
   }, [products])
 
   useEffect(() => {
@@ -111,6 +113,7 @@ const App = () => {
     setCreditAddModal,
     userLoading,
     productsLoading,
+    setProductsLoading,
     filteredProducts,
     fetchProducts,
     page,
@@ -153,6 +156,7 @@ const App = () => {
                </Route>
                <Route exact path='/products' component={Products} />
                <Route exact path='/history' component={RedeemHistory} />
+               <Redirect to='/products' />
              </Switch>
             
            </Router>
