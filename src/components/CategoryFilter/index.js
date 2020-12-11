@@ -66,7 +66,11 @@ const CategoryFilter = () => {
         }
     )
     )
-    if (cat !== 'all') setOptions(categories => [...categories, cat])
+    if (cat === 'all'){
+        setOptions(productsCategories)
+    }else{
+       setOptions(categories => [...categories, cat]) 
+    } 
     }
 
     return (
