@@ -4,6 +4,7 @@ import {ProductsContainer} from './styles/productcontainer'
 import { appContext} from '../../contexts'
 import NavigationBar from '../NavigationBar'
 import CardSkeleton from '../../components/Skeletons/CardSkeleton'
+import Footer from '../Footer'
 
 
 
@@ -66,9 +67,21 @@ const Products = (props) => {
                 )
             })}
             
-            
+             
 
         </ProductsContainer>
+        <Footer>
+            <NavigationBar
+            setPageRange={setPageRange}
+            start={pageRange.start}
+            end={pageRange.end}
+            total={filteredProducts.length}
+            maxPage={maxPage}
+            page={page} 
+            setPage={setPage}
+          />  
+        </Footer>
+        
         </>
     )
 }

@@ -24,6 +24,7 @@ const Container = styled.div`
 `
 
 const App = () => {
+
   const [user, fetchUser] = useFetch()
   const [userLoading, setUserLoading] = useState(true)
   const [productsLoading, setProductsLoading] = useState(true)
@@ -160,7 +161,6 @@ const App = () => {
              </Switch>
             
            </Router>
-           
          </appContext.Provider>
         </Container>
      );

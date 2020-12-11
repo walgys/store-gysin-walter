@@ -7,7 +7,7 @@ import { imgURL } from '../../utils'
 import CardSkeleton from '../../components/Skeletons/CardSkeleton'
 import * as dayjs from 'dayjs'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat'
-
+import Footer from '../Footer'
 
 
 
@@ -70,6 +70,17 @@ const History = (props) => {
            
 
        </HistoryContainer>
+       <Footer>
+       <NavigationBar
+           setPageRange={setHistoryPageRange}
+           start={historyPageRange.start}
+           end={historyPageRange.end}
+           total={filteredHistory.length}
+           maxPage={historyMaxPage}
+           page={historyPage} 
+           setPage={setHistoryPage}
+        />
+        </Footer>
        </>
    )
 }

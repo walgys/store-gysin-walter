@@ -1,10 +1,11 @@
 import React from 'react'
+import {FooterContainerStyled} from './styles/footer.js'
 
-const Footer = () => {
+const Footer = ({children}) => {
     return (
-        <div>
-            Footer
-        </div>
+        <FooterContainerStyled>
+            {children}
+        </FooterContainerStyled>
     )
 }
 
