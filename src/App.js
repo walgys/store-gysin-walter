@@ -80,6 +80,7 @@ const App = () => {
     if(page === maxPage) setPageRange({start: (page-1) * productsPerPage, end: page * productsPerPage})  
   }, [page, maxPage])
 
+  
   useEffect(() => {
     if(historyPage === 1 ) setHistoryPageRange({start:0, end:historyProductsPerPage})
     if(historyPage > 1 && historyPage < historyMaxPage) setHistoryPageRange({start: historyPage * historyProductsPerPage, end: (historyPage + 1) * historyProductsPerPage})
@@ -105,7 +106,11 @@ const App = () => {
     })
   }, [historyFilters, history])
 
-  
+  useEffect(() => {
+    if(filteredProducts.length <= productsPerPage){
+      setPage(1)
+    }
+  }, [filteredProducts])
 
   const values = {
     user,
